@@ -1,65 +1,47 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
 
-  <!-- Card -->
-  <div class="bg-white shadow-xl rounded-2xl p-10 w-full max-w-md">
+  <mat-card class="w-full max-w-md p-8 rounded-2xl shadow-lg">
 
-    <!-- Header -->
-    <div class="flex flex-col items-center mb-6">
-      <img src="/assets/img/Logo_Letra_FinMind.png" alt="FinMind" class="w-40">
-      <h1 class="text-2xl font-bold text-center text-gray-800">Bienvenido de nuevo</h1>
+    <div class="text-center mb-6">
+      <img src="/assets/img/Logo_Letra_FinMind.png" width="120" class="mx-auto mb-2" />
+      <h1 class="text-2xl font-bold text-gray-800">Bienvenido de nuevo</h1>
       <p class="text-gray-500 text-sm">Accede a tu panel inteligente de finanzas</p>
     </div>
 
-    <!-- Form -->
-    <form [formGroup]="loginForm" (ngSubmit)="submit()" class="space-y-4">
 
-      <!-- EMAIL -->
-      <div class="mb-4">
-        <label for="email" class="block text-gray-500 mb-1 font-primary font-medium text-sm">Email</label>
+    <form class="flex flex-col gap-4" appearance="outline">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" placeholder="pat@example.com">
+        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="••••••••">
+      </mat-form-field>
 
-        <div class="relative">
-          <lucide-icon [img]="FileIcon_Email" size="20"
-            class="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-          </lucide-icon>
-
-          <input id="email" type="email" formControlName="email" placeholder="tu@mail.com" class="w-full border rounded-lg py-2 pl-10 pr-3 text-gray-700 placeholder:text-gray-500
-             focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
-        </div>
-      </div>
-
-      <!-- Contraseña -->
-      <div class="mb-4">
-        <label for="email" class="block text-gray-500 mb-1 font-primary font-medium text-sm">Contraseña</label>
-
-        <div class="relative">
-          <lucide-icon [img]="FileIcon_Password" size="20"
-            class="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-          </lucide-icon>
-
-          <input id="paswword" type="paswword" formControlName="paswword" placeholder="*****" class="w-full border rounded-lg py-2 pl-10 pr-3 text-gray-700 placeholder:text-gray-500
-             focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
-        </div>
-      </div>
-
-      <button type="button" (click)="goLogin()"
-        class="w-full bg-primary text-black font-semibold rounded-lg py-3 text-center hover:bg-primary-light transition">
-        Comenzar
+      <button mat-raised-button type="submit" class="w-full py-3 font-semibold rounded-lg text-white"
+        style="background-color: #1E3557; color: white;">
+        Iniciar sesión
       </button>
-
 
     </form>
 
-    <div class="mt-6 text-center text-sm">
+
+    <div class="mt-4 text-center text-sm">
       <span class="text-gray-500">¿No tienes cuenta?</span>
-      <a (click)="goRegister()" class="ml-1 font-semibold text-gray-800 hover:text-gray-600">
+      <a (click)="goRegister()" class="text-primary font-medium hover:underline cursor-pointer">
         Regístrate aquí
       </a>
-
     </div>
 
 
 
-
-  </div>
+  </mat-card>
 
 </div>

@@ -1,1 +1,56 @@
-<h1>Register</h1>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+
+  <mat-card class="w-full max-w-md p-8 rounded-2xl shadow-lg">
+
+    <div class="text-center mb-6">
+      <img src="/assets/img/Logo_Letra_FinMind.png" width="120" class="mx-auto mb-2" />
+      <h2 class="text-2xl font-bold text-gray-800">Crea tu cuenta FinMind</h2>
+      <p class="text-gray-500 text-sm">Tu asistente financiero inteligente.</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()" class="flex flex-col gap-4">
+
+      <mat-form-field class="example-full-width " appearance="outline">
+        <mat-label>Nombre:</mat-label>
+        <input matInput placeholder="Ex. Pizza" value="Sushi">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width " appearance="outline">
+        <mat-label>Telefono</mat-label>
+        <input type="tel" matInput placeholder="+51 555-555-1234">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Presupuesto Inicial</mat-label>
+        <input type="tel" matInput placeholder="$20000.00">
+      </mat-form-field>
+
+
+      <button mat-raised-button type="submit" class="w-full py-3 font-semibold rounded-lg text-white"
+        style="background-color: #1E3557; color: white;">
+        Registrarse
+      </button>
+
+
+    </form>
+
+    <div class="mt-5 text-center text-sm">
+      <span class="text-gray-500">¿Ya tienes cuenta?</span>
+      <a (click)="goLogin()" class="ml-1 text-primary font-medium hover:underline cursor-pointer">
+        Inicia sesión
+      </a>
+    </div>
+  </mat-card>
+
+</div>
