@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ButtonSubmitComponent } from "../../../core/shared/components/button-submit/button-submit.component";
-import { LucideAngularModule, Mail,Lock } from 'lucide-angular';
+import { Router, RouterOutlet } from '@angular/router';
+import { LucideAngularModule, Mail, Lock } from 'lucide-angular';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +10,8 @@ import { LucideAngularModule, Mail,Lock } from 'lucide-angular';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ButtonSubmitComponent,
-    LucideAngularModule
+    LucideAngularModule,
+    RouterOutlet
   ],
 
   templateUrl: './login.component.html',
@@ -58,6 +57,11 @@ export class LoginComponent {
       this.router.navigate(['/dashboard']);
     }, 1200);
   }
+
+  goRegister() {
+    this.router.navigate(['/auth/register']);
+  }
+
 
 
 }

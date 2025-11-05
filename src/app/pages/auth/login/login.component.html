@@ -41,15 +41,25 @@
         </div>
       </div>
 
+      <button type="submit" [disabled]="loginForm.invalid || loading()" class="w-full flex items-center justify-center gap-2 bg-lime-500 text-black font-semibold
+         rounded-lg py-3 transition hover:bg-lime-600 disabled:opacity-50 disabled:cursor-not-allowed">
+        <lucide-icon name="log-in" class="w-4 h-4"></lucide-icon>
+        {{ loading() ? 'Ingresando...' : 'Iniciar sesión' }}
+      </button>
+
+
 
     </form>
 
-    <div class="text-center mt-6 text-sm">
-      <span class="text-gray-600">¿No tienes cuenta?</span>
-      <a routerLink="/register" class="text-[#3B4D6520] font-medium hover:underline">
-        Regístrate
+    <div class="mt-6 text-center text-sm">
+      <span class="text-gray-500">¿No tienes cuenta?</span>
+      <a (click)="goRegister()" class="ml-1 font-semibold text-gray-800 hover:text-gray-600">
+        Regístrate aquí
       </a>
+
     </div>
+
+
 
 
   </div>
