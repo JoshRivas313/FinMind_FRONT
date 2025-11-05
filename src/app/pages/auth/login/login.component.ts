@@ -19,6 +19,7 @@ import { LucideAngularModule, Mail, Lock } from 'lucide-angular';
 })
 export class LoginComponent {
 
+
   readonly FileIcon_Email = Mail;
   readonly FileIcon_Password = Lock;
 
@@ -60,6 +61,10 @@ export class LoginComponent {
 
   goRegister() {
     this.router.navigate(['/auth/register']);
+  }
+
+  goLogin() {
+    this.router.navigate(['/dashboard']);
   }
 
 

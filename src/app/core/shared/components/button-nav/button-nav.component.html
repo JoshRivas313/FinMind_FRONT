@@ -1,0 +1,9 @@
+<button
+  type="button"
+  (click)="handleClick()"
+  [disabled]="disabled || loading"
+  class="bg-lime-500 text-black font-semibold rounded-lg py-3 text-center hover:bg-lime-600 transition
+         disabled:opacity-50 disabled:cursor-not-allowed"
+  [class.w-full]="full">
+  {{ loading ? 'Cargando...' : label }}
+</button>
