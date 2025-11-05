@@ -1,3 +1,72 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url(./themes/_matFormt.scss);
+@import url(./themes/_matDialog.scss);
+@import url(./themes/_table.scss);
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+:root {
+	--primary: #0C2340;
+	--accent: #d32f2f;
+
+	--secondary: #1d72b8;
+	--default: #f8f8f8;
+	--success: #28c76f;
+	--textPrimary: #1e293b;
+	--textDefault: #64748b;
+	--mdc-shape-small: 12px;
+	--mdc-shape-medium: 12px;
+	--mdc-checkbox-state-layer-size: 30px;
+	--radius: 12px;
+	--mdc-protected-button-container-shape: 12px !important;
+
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+	border-color: #CBD5E1 !important;
+  }
+  
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+  font-family: "Inter", sans-serif !important;
+
+}
+html {
+	scroll-behavior: inherit;
+	font-size: 16px;
+}
+html,
+body {
+	background-color: #f1f5f9;
+	position: relative;
+	letter-spacing: normal;
+	font-family:
+		'Inter var',
+		ui-sans-serif,
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		Segoe UI,
+		Roboto,
+		Helvetica Neue,
+		Arial,
+		Noto Sans,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji',
+		Segoe UI Symbol,
+		'Noto Color Emoji';
+	font-feature-settings: 'salt' !important;
+	-webkit-font-feature-settings: 'salt' !important;
+	-moz-font-feature-settings: 'salt' !important;
+}
+@layer components {
+	.card {
+		@apply w-full  flex flex-col p-4 shadow rounded-xl bg-white;
+	}
+}
