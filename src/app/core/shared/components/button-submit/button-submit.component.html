@@ -1,0 +1,7 @@
+<button
+  type="submit"
+  [disabled]="disabled || loading()"
+  class="w-full bg-[#283646] text-white font-semibold rounded-lg py-2
+         disabled:opacity-50 disabled:cursor-not-allowed">
+  {{ loading() ? loadingText : text }}
+</button>
