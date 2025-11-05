@@ -41,12 +41,10 @@
         </div>
       </div>
 
-      <button type="submit" [disabled]="loginForm.invalid || loading()" class="w-full flex items-center justify-center gap-2 bg-lime-500 text-black font-semibold
-         rounded-lg py-3 transition hover:bg-lime-600 disabled:opacity-50 disabled:cursor-not-allowed">
-        <lucide-icon name="log-in" class="w-4 h-4"></lucide-icon>
-        {{ loading() ? 'Ingresando...' : 'Iniciar sesión' }}
+      <button type="button" (click)="goLogin()"
+        class="w-full bg-primary text-black font-semibold rounded-lg py-3 text-center hover:bg-primary-light transition">
+        Comenzar
       </button>
-
 
 
     </form>
