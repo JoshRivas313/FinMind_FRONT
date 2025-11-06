@@ -1,1 +1,63 @@
-<p>navbar works!</p>
+
+
+    <aside class="relative p-8 h-full bg-white w-[220p left-0 z-50 w-64 bg-sidebar-bg shadow-lg transition-transform duration-300 lg:translate-x-0"
+           [class.-translate-x-full]="!isOpen">
+          <div class="flex gap-2 items-center">
+        <i class="ti ti-cube text-[30px] font-extrabold"></i>
+        <p class="font-extrabold text-[20px]">FinMind</p>
+    </div>
+      <!-- Botón móvil -->
+      <button (click)="toggle()" 
+              class="absolute top-4 right-4 lg:hidden">
+        <i
+ [ngClass]="{
+      'ti ti-x': isOpen,
+    }"
+        >{{ isOpen ? 'close' : 'menu' }}</i>
+      </button>
+
+      <nav class="flex flex-col h-full pt-8">
+        <!-- Dashboard (destacado) -->
+        <a routerLink="/dashboard" 
+           routerLinkActive="active-dashboard"
+           class="flex items-center gap-2  px-2 font-medium rounded-xl xd active-btn relative"
+           [class.bg-gradient-to-r]="isActive('/dashboard')"
+           [class.from-green-500]="isActive('/dashboard')"
+           [class.to-verde-lima]="isActive('/dashboard')">
+          <i class=" ti ti-layout-dashboard  text-[22px] font-medium  "></i>
+          <span class="text-[15px]">Dashboard</span>
+        </a>
+
+        <!-- Resto de items -->
+        <div class="flex-1 ">
+          <mat-nav-list>
+            <a mat-list-item 
+               *ngFor="let item of menuItems"
+               [routerLink]="item.route"
+               routerLinkActive="active-item"
+                   class="flex items-center gap-2  py-4 !px-2 font-medium">
+               
+               <!-- Indicador verde izquierdo -->
+               <div class="w-1  rounded-r-full bg-verde-lima opacity-0 transition-opacity"
+                    [class.opacity-100]="isActive(item.route)">
+               </div>
+                <div class="flex gap-2 items-center">
+                                   <i
+                [ngClass]="
+                  item.icon
+                  "
+                  class="text-[22px]  font-medium"
+               ></i>
+               <span class="text-[15px] font-medium text-texto-sidebar">{{ item.label }}</span>
+                </div>
+            </a>
+          </mat-nav-list>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Overlay móvil -->
+    <div *ngIf="isOpen" 
+         class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+         (click)="isOpen = false">
+    </div>

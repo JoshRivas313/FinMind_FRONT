@@ -26,19 +26,11 @@ export const routes: Routes = [
       }
     ]
   },
-
   {
-    path:"bills",
-    component: BillsComponent,
-    title: "Gastos"
-  },
-
-  {
-    path:"configuration",
-    component:ConfigurationComponent,
-    title:"Configuracion"
-  },
-
+    path: "dashboard",
+    loadChildren: () => import("./pages/dashboard/dashboard.routes").then(e => e.routes),
+    title: 'dashboard'
+  },   
   {
     path: '',
     redirectTo: 'auth/login',

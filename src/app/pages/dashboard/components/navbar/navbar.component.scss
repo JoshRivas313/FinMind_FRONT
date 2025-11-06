@@ -1,0 +1,28 @@
+
+.xd::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+      background: linear-gradient(to right, #22c55e, #84cc16) !important;
+      height: 100%;
+      width: 25px;
+      z-index: -1;
+      border-radius: 10px 0 0 10px;
+    }
+    .active-item{
+        position: relative;
+        background-color: #E6E8EC !important;
+    }
+    .active-item {
+
+      @apply bg-white shadow-md;
+    }
+    .active-item .bg-verde-lima {
+      opacity: 1 !important;
+    }
+
+    .active-btn{
+        padding: 8px 8px;
+        border-radius: 14px !important;
+    }
