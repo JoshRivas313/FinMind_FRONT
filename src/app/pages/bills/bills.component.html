@@ -1,0 +1,120 @@
+<div class="p-6">
+
+  <!-- Title + Search -->
+  <div class="flex justify-between items-center mb-4">
+
+    <div>
+      <h1 class="text-3xl font-bold text-gray-800">Historial de Gastos </h1>
+      <p class="text-gray-500 text-sm mt-1">Explora, filtra y gestiona todas tus transacciones.</p>
+    </div>
+
+    <div class="relative w-64">
+      <mat-form-field class="example-full-width " appearance="outline">
+        <input matInput placeholder="🔎 Buscar transacción">
+      </mat-form-field>
+
+    </div>
+  </div>
+
+  <!-- FILTER  -->
+  <div class="flex items-center gap-3 mb-6 bg-white rounded-xl">
+
+    <mat-form-field appearance="outline" class="mat-select-round w-52 mt-5 ml-5">
+      <mat-select placeholder=" Categoría" formControlName="category">
+
+        @for (c of categories; track c) {
+        <mat-option [value]="c">{{ c }}</mat-option>
+        }
+      </mat-select>
+
+      <mat-label>Categorias</mat-label>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="date-range-field w-96 mt-5 ml-5">
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Inicio" />
+        <input matEndDate placeholder="Fin" />
+      </mat-date-range-input>
+
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      <mat-label> Rango de fechas</mat-label>
+    </mat-form-field>
+
+
+
+    <!-- Botón aplicar filtros -->
+    <button matButton="outline"
+      class="bg-[#1E3557] hover:bg-[#2A4A7A] text-white font-semibold rounded-full ml-28 px-6 py-3 text-sm transition-colors duration-300 ease-in-out">
+      Aplicar filtros
+    </button>
+
+    <!-- Botón exportar CV -->
+    <button matButton="outline"
+      class="bg-white border border-[#1E3557] hover:bg-[#F3F6FA] text-[#1E3557] font-semibold rounded-full ml-4 px-6 py-3 text-sm transition-colors duration-300 ease-in-out">
+      Exportar CV
+    </button>
+
+
+
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-[60%_40%] gap-2  ">
+
+    <div class="bg-white p-4 rounded-lg ">
+      <tableHistory></tableHistory>
+    </div>
+
+
+    <div class="space-y-2 gap-4 ">
+
+      <div class=" bg-white p-3 rounded-lg ">
+        <div class="p-4">
+          <h2 class="text-lg font-bold text-gray-800 mb-3">Totales del período</h2>
+
+          <div class="flex justify-between text-sm py-2">
+            <span class="text-gray-600">Total Gastos</span>
+            <span class="font-semibold text-red-500">
+              {{ totalExpenses | currency:'USD':'symbol' }}
+            </span>
+          </div>
+
+          <div class="flex justify-between text-sm py-4">
+            <span class="text-gray-600">Total Ingresos</span>
+            <span class="font-semibold text-green-600">
+              {{ totalIncomes | currency:'USD':'symbol' }}
+            </span>
+          </div>
+
+          <mat-divider class="my-3"></mat-divider>
+
+          <div class="flex justify-between text-sm py-2 font-semibold">
+            <span class="text-gray-800">Balance Neto</span>
+            <span [ngClass]="netBalance >= 0 ? 'text-green-600' : 'text-red-500'">
+              {{ netBalance | currency:'USD':'symbol' }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class=" bg-white p-3 rounded ">
+       <smart-tips></smart-tips>
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+</div>

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { BillsComponent } from './pages/bills/bills.component';
 
 export const routes: Routes = [
 
@@ -23,6 +24,12 @@ export const routes: Routes = [
         pathMatch: 'full'
       }
     ]
+  },
+
+  {
+    path:"bills",
+    component: BillsComponent,
+    title: "Gastos"
   },
 
   {

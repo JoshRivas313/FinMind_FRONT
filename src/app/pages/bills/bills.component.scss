@@ -1,0 +1,40 @@
+.mat-select-round .mat-mdc-form-field-outline {
+  border-radius: 25px !important;
+}
+.mat-select-round .mat-mdc-text-field-wrapper {
+  padding-left: 10px !important;
+  border-radius: 25px !important;
+}
+
+
+.date-range-field .mat-mdc-text-field-wrapper {
+  border-radius: 40px !important;
+  padding-left: 8px;
+}
+
+.date-range-field .mat-mdc-form-field-flex {
+  align-items: center;
+}
+
+.date-range-field input {
+  font-size: 14px;
+}
+
+.date-range-field .mat-mdc-form-field-subscript-wrapper {
+  display: none; /* Oculta errores si no quieres ver validaciones debajo */
+}
+
+/* styles.scss o tailwind.css */
+.mat-mdc-table {
+  @apply rounded-xl shadow-sm border border-gray-200;
+}
+
+.mat-mdc-header-row {
+  @apply bg-white border-b border-gray-200;
+}
+
+
+table {
+  width: 100%;
+}
+

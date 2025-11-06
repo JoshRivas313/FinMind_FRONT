@@ -1,0 +1,150 @@
+<div class="w-full bg-white rounded-xl shadow-sm overflow-hidden">
+
+  <!-- Encabezados globales -->
+  <table mat-table [dataSource]="[]" class="w-full border-b">
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef class="px-4 py-3 text-xs font-semibold text-gray-500">
+        Descripción
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef class="px-4 py-3 text-xs font-semibold text-gray-500">
+        Categoría
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="uiDate">
+      <th mat-header-cell *matHeaderCellDef class="px-4 py-3 text-xs font-semibold text-gray-500">
+        Fecha
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef class="px-4 py-3 text-xs font-semibold text-gray-500">
+        Monto
+      </th>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  </table>
+
+  <!-- ---------- HOY ---------- -->
+  @if (todayRows.length > 0) {
+    <div class="px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-50 border-b">
+      Hoy
+    </div>
+
+    <table mat-table [dataSource]="todayRows" class="w-full">
+      <ng-container matColumnDef="description">
+        <td mat-cell *matCellDef="let row" class="px-4 py-3 font-medium text-gray-700">
+          {{ row.description }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <td mat-cell *matCellDef="let row" class="text-gray-600">
+          {{ row.category }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="uiDate">
+        <td mat-cell *matCellDef="let row" class="text-gray-600">
+          {{ row.uiDate }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <td mat-cell *matCellDef="let row"
+            [ngClass]="row.amount >= 0 ? 'positive' : 'negative'"
+            class="font-semibold">
+          {{ row.amount | currency:'USD':'symbol' }}
+        </td>
+      </ng-container>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" class="hover:bg-gray-50 transition"></tr>
+    </table>
+  }
+
+  <!-- ---------- ESTA SEMANA ---------- -->
+  @if (weekRows.length > 0) {
+    <div class="px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-50 border-b mt-1">
+      Esta Semana
+    </div>
+
+    <table mat-table [dataSource]="weekRows" class="w-full">
+      <ng-container matColumnDef="description">
+        <td mat-cell *matCellDef="let row" class="px-4 py-3 font-medium text-gray-700">
+          {{ row.description }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <td mat-cell *matCellDef="let row" class="text-gray-600">
+          {{ row.category }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="uiDate">
+        <td mat-cell *matCellDef="let row" class="text-gray-600">
+          {{ row.uiDate }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <td mat-cell *matCellDef="let row"
+            [ngClass]="row.amount >= 0 ? 'positive' : 'negative'"
+            class="font-semibold">
+          {{ row.amount | currency:'USD':'symbol' }}
+        </td>
+      </ng-container>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" class="hover:bg-gray-50 transition"></tr>
+    </table>
+  }
+
+  <!-- ---------- SEMANA PASADA ---------- -->
+  @if (pastRows.length > 0) {
+    <div class="px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-50 border-b mt-1">
+      Semana Pasada
+    </div>
+
+    <table mat-table [dataSource]="pastRows" class="w-full">
+      <ng-container matColumnDef="description">
+        <td mat-cell *matCellDef="let row" class="px-4 py-3 font-medium text-gray-700">
+          {{ row.description }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <td mat-cell *matCellDef="let row" class="text-gray-600">
+          {{ row.category }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="uiDate">
+        <td mat-cell *matCellDef="let row" class="text-gray-600">
+          {{ row.uiDate }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <td mat-cell *matCellDef="let row"
+            [ngClass]="row.amount >= 0 ? 'positive' : 'negative'"
+            class="font-semibold">
+          {{ row.amount | currency:'USD':'symbol' }}
+        </td>
+      </ng-container>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" class="hover:bg-gray-50 transition"></tr>
+    </table>
+  }
+
+  <!-- ---------- SIN DATOS ---------- -->
+  @if (todayRows.length === 0 && weekRows.length === 0 && pastRows.length === 0) {
+    <div class="text-center py-6 text-gray-500 text-sm">
+      No hay transacciones en el historial.
+    </div>
+  }
+
+</div>
